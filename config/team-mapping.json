@@ -1,0 +1,19 @@
+{
+  "projects": {
+    "TO": "TestOps",
+    "CE": "CE/WebDev",
+    "KTC": "TestCloud"
+  },
+  "components": {
+    "Playwright report": "TestCloud Team",
+    "test-runner-agent": "Core Team",
+    "test-case-generator-agent": "Manual Team",
+    "insight-agent": "Report and Analysis Team"
+  },
+  "labels": {
+    "TestRunner": "TestCloud Team",
+    "test-runner-agent": "Core Team",
+    "test-case-generator-agent": "Manual Team",
+    "insight-agent": "Report and Analysis Team"
+  }
+}

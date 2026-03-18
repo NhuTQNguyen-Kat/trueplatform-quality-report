@@ -1,0 +1,55 @@
+{
+  "teams": [
+    {
+      "id": "admin-team",
+      "name": "Admin Team",
+      "projectKey": "TO",
+      "jql": "project = TO and fixVersion = \"AD.2.0.0-260401\" and type in (Bug, Story, Epic)"
+    },
+    {
+      "id": "manual-team",
+      "name": "Manual Team",
+      "projectKey": "TO",
+      "jql": "project = TO and (fixVersion = \"MT1.4.0\" or labels = test-case-generator-agent) and type in (Bug, Story, Epic)"
+    },
+    {
+      "id": "ra-team",
+      "name": "Report and Analysis Team (RA)",
+      "projectKey": "TO",
+      "jql": "project = TO and (labels = insight-agent or parent = TO-12502 or key = TO-12502 or key = TO-16687) and key != TO-16746 and type in (Bug, Story, Epic)"
+    },
+    {
+      "id": "core-team",
+      "name": "Core Team",
+      "projectKey": "TO",
+      "jql": "project = TO and (labels = test-runner-agent or fixVersion = \"Core 1.5.0\" or key in (TO-16851, TO-17009)) and type in (Bug, Story, Epic)"
+    },
+    {
+      "id": "testcloud-team",
+      "name": "TestCloud Team",
+      "projectKey": "KTC",
+      "jql": "project = KTC and (component = \"Playwright report\" or component = \"Test Runner Agent\" or labels = test-runner-agent or parent = KTC-4655 or key = KTC-4655 or parent = KTC-2077 or key = KTC-2077) and type in (Bug, Story, Epic)"
+    },
+    {
+      "id": "ce-team",
+      "name": "CE Team",
+      "projectKey": "CE",
+      "jql": "project = CE and (Sprint = \"Sprint 46\" or Sprint = 46) and type in (Bug, Story, Epic)"
+    },
+    {
+      "id": "dlt-team",
+      "name": "DLT Team",
+      "projectKey": "CE",
+      "jql": "project = CE and (Sprint = \"Sprint 47\" or Sprint = 47) and type in (Bug, Story, Epic)"
+    }
+  ],
+  "excludeKeys": ["TO-16746"],
+  "_notes": {
+    "admin": "All tickets/bugs in release AD.2.0.0-260401 — Admin team responsibility for True Platform.",
+    "manual": "True Platform: release MT1.4.0 OR label test-case-generator-agent.",
+    "testcloud": "True Platform only: component Playwright report OR Test Runner Agent, OR label test-runner-agent, OR epic KTC-4655, OR epic KTC-2077. No fixVersion filter.",
+    "ce_dlt": "CE: Sprint 46 | DLT: Sprint 47. Both in project CE. Add labels filter if you have 'true-platform' or similar.",
+    "ra": "Insight Agent epic TO-12502, TO-16687. Exclude TO-16746.",
+    "core": "Test Runner Agent (label), Core 1.5.0, TO-16851 Bug Reporting MCP, TO-17009 Bug Reporting"
+  }
+}

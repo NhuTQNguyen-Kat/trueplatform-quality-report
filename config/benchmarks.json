@@ -1,0 +1,58 @@
+{
+  "priorities": {
+    "critical": ["Blocker", "Critical"],
+    "high": ["High"],
+    "medium": ["Medium"],
+    "low": ["Low"]
+  },
+  "statuses": {
+    "done": ["Done", "Closed", "Resolved", "CLOSED"],
+    "inProgress": ["In Progress", "Open", "IN PROGRESS", "BLOCKED", "Blocked"],
+    "blocked": ["Blocked", "BLOCKED"],
+    "excluded": ["Will not implement"],
+    "inTesting": ["Ready for Test", "Ready For Test", "READY FOR TEST", "In Testing", "IN TESTING", "In Review", "IN REVIEW", "In Test", "READY FOR PUBLISH", "IN CODE REVIEW", "IN FINAL REVIEW"],
+    "toDo": ["To Do", "TO DO", "In Preparation", "IN PREPARATION", "Selected for Development"],
+    "completionIncludes": ["Done", "Closed", "Resolved", "CLOSED", "Ready for Test", "Ready For Test", "READY FOR TEST", "In Testing", "IN TESTING", "In Review", "IN REVIEW", "In Test", "READY FOR PUBLISH", "IN CODE REVIEW", "IN FINAL REVIEW", "Selected for Development"]
+  },
+  "teamHealth": {
+    "red": [
+      { "rule": "blockerExists", "value": true },
+      { "rule": "criticalBugs", "op": ">", "value": 0 },
+      { "rule": "highBugs", "op": ">", "value": 5 },
+      { "rule": "mustFixUnresolved", "value": true },
+      { "rule": "completionPercent", "op": "<", "value": 70 }
+    ],
+    "amber": [
+      { "rule": "highBugs", "op": "between", "min": 1, "max": 5 },
+      { "rule": "completionPercent", "op": "between", "min": 70, "max": 90 }
+    ],
+    "green": [
+      { "rule": "noBlocker" },
+      { "rule": "noCritical" },
+      { "rule": "mustFixResolved" },
+      { "rule": "completionPercent", "op": ">=", "value": 90 }
+    ]
+  },
+  "releaseReadiness": {
+    "NOT_READY": ["blockerExists", "criticalBugs>0", "mustFixUnresolved"],
+    "AT_RISK": ["highBugs>5", "teamsAtRisk>0"],
+    "READY": ["allGreen"]
+  },
+  "dodFormula": {
+    "description": "DOD Verdict = GO / CONDITIONAL GO / NO GO based on criteria below",
+    "noGo": ["Blocker exists", "Critical bugs open", "Must-fix unresolved"],
+    "conditionalGo": ["High priority > 5", "Teams at risk > 0", "Completion < 70%"],
+    "go": ["All criteria pass"]
+  },
+  "mustFixRules": [
+    { "type": "priority", "values": ["Blocker", "Critical"] },
+    { "type": "label", "contains": "release-blocker" },
+    { "type": "component", "contains": "trueplatform-core" }
+  ],
+  "bugScoring": {
+    "priority": { "Blocker": 100, "Critical": 80, "High": 50, "Medium": 20, "Low": 5 },
+    "severity": { "Critical": 30, "Major": 20, "Minor": 10 },
+    "ageWeight": 0.5,
+    "unassignedPenalty": 10
+  }
+}

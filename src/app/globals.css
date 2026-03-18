@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --health-green: #10b981;
+  --health-amber: #f59e0b;
+  --health-red: #ef4444;
+  --bg-page: #f8fafc;
+  --card-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.06), 0 1px 2px -1px rgb(0 0 0 / 0.06);
+  --card-radius: 12px;
+}
+
+body {
+  @apply text-slate-900 antialiased;
+  background: var(--bg-page);
+  font-feature-settings: "rlig" 1, "calt" 1;
+}
