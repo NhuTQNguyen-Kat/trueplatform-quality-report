@@ -2,6 +2,11 @@ node_modules
 .next
 .env
 .env.local
+.env.local.qa
 *.log
 .DS_Store
 data/cache.json
+.vercel
+
+# k6 NDJSON: GitHub blocks files >100MB. Long runs (e.g. sustained50x30m) often exceed — commit smaller runs or use LOADTEST_REPORTS_URLS on Vercel.
+data/load-test-reports/run-*-sustained50x30m.json
