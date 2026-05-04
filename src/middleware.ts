@@ -15,8 +15,9 @@ export async function middleware(request: NextRequest) {
 
   const isLogin = request.nextUrl.pathname === '/login';
   const isAuthApi = request.nextUrl.pathname.startsWith('/api/auth');
+  const isPublicSummaryApi = request.nextUrl.pathname === '/api/public-summary';
 
-  if (isLogin || isAuthApi) {
+  if (isLogin || isAuthApi || isPublicSummaryApi) {
     if (isLogin && isLoggedIn) {
       return NextResponse.redirect(new URL('/', request.url));
     }

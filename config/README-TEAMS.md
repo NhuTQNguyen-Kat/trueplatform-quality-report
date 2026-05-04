@@ -1,8 +1,9 @@
 # Team JQL Configuration – TruePlatform
 
-Cấu hình JQL cho từng team đã được thiết lập theo yêu cầu. Cần kiểm tra và điều chỉnh nếu cần:
+The team-level JQL configuration has been set based on the current requirements.
+Review and adjust where necessary.
 
-## Teams và nguồn data
+## Teams and data sources
 
 | Team | Project | JQL Filter |
 |------|---------|------------|
@@ -15,18 +16,22 @@ Cấu hình JQL cho từng team đã được thiết lập theo yêu cầu. C�
 | **CE Team** | CE | Sprint 46 |
 | **WebDev Team** | CE | Sprint 47 |
 
-## Cần xác nhận / điều chỉnh
+## Items to confirm / adjust
 
-1. **Katalon TestCloud project key**: Đang dùng `KTC`. Nếu project key khác (vd: `TC`, `KT`), sửa trong `config/team-jql.json` → team `testcloud-team` → `projectKey` và JQL.
+1. **Katalon TestCloud project key**: Currently set to `KTC`.
+   If your project key is different (e.g. `TC`, `KT`), update `config/team-jql.json` in team `testcloud-team` for both `projectKey` and JQL.
 
-2. **Epic Monitor (4655)**: Đang dùng `parent = KTC-4655 OR key = KTC-4655`. Nếu epic key khác (vd: `TC-4655`), sửa trong JQL của TestCloud team.
+2. **Epic Monitor (4655)**: Currently using `parent = KTC-4655 OR key = KTC-4655`.
+   If the epic key is different (e.g. `TC-4655`), update the TestCloud team JQL.
 
-3. **Sprint 46 / 47**: JQL đang dùng `Sprint = "Sprint 46"` hoặc `Sprint = 46`. Nếu Jira dùng tên sprint khác (vd: `"CE Sprint 46"`), sửa trong `config/team-jql.json` cho CE và WebDev team.
+3. **Sprint 46 / 47**: JQL currently uses `Sprint = "Sprint 46"` or `Sprint = 46`.
+   If Jira uses a different sprint name (e.g. `"CE Sprint 46"`), update `config/team-jql.json` for CE and WebDev teams.
 
-4. **AI Team**: Hiện lấy toàn bộ issues trong project TO. Nếu board 965 có filter riêng (label, component...), thêm điều kiện vào JQL của AI team.
+4. **AI Team**: Currently includes all issues in project TO.
+   If board 965 has a dedicated filter (label, component, ...), add that condition to the AI team JQL.
 
-## Cách chạy sync
+## How to run sync
 
-1. Đảm bảo `.env.local` có `JIRA_BASE_URL`, `JIRA_EMAIL`, `JIRA_API_TOKEN`.
-2. Vào **Data Sync** → **Sync from Jira**.
-3. Kiểm tra dữ liệu trên Dashboard và các trang Teams, Bugs.
+1. Ensure `.env.local` contains `JIRA_BASE_URL`, `JIRA_EMAIL`, `JIRA_API_TOKEN`.
+2. Go to **Data Sync** → **Sync from Jira**.
+3. Verify data on the Dashboard and Teams/Bugs pages.

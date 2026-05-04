@@ -1,0 +1,28 @@
+# Create a Confluence Executive Snapshot page every Tuesday morning (Vietnam time)
+# using metrics captured at execution time.
+# Schedule: 08:00 Tuesday Asia/Ho_Chi_Minh = 01:00 UTC Tuesday.
+name: Confluence weekly executive snapshot
+
+on:
+  schedule:
+    - cron: "0 1 * * 2"
+  workflow_dispatch: {}
+
+concurrency:
+  group: confluence-snapshot
+  cancel-in-progress: false
+
+jobs:
+  create-page:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Create Confluence page (live Jira + template)
+        env:
+          JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
+          JIRA_EMAIL: ${{ secrets.JIRA_EMAIL }}
+          JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+          CONFLUENCE_TEMPLATE_PAGE_ID: ${{ secrets.CONFLUENCE_TEMPLATE_PAGE_ID }}
+        run: node scripts/create-confluence-executive-snapshot.mjs

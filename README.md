@@ -27,8 +27,16 @@ Create a `.env.local` file (copy from `.env.example`):
 | `JIRA_PROJECT_KEYS` | Yes (for live) | Comma-separated, e.g. `TP,TRUEPLATFORM` |
 | `JIRA_JQL_BASE` | No | Optional base JQL, e.g. `labels = trueplatform` |
 | `TARGET_RELEASE_DATE` | No | For display on dashboard |
+| `PUBLIC_SUMMARY_API_KEY` | Optional | API key for unauthenticated `GET /api/public-summary` |
 
 **Demo mode:** If `JIRA_BASE_URL` or `JIRA_API_TOKEN` is empty, the app uses `data/demo-data.json`.
+
+### Public Summary API (for Confluence sync)
+
+- Endpoint: `GET /api/public-summary`
+- Auth: pass key via header `x-summary-key` or query `?key=...`
+- Required env: `PUBLIC_SUMMARY_API_KEY`
+- Response fields: `lastSync`, `isDemoMode`, `summary`
 
 ---
 
